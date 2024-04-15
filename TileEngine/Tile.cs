@@ -29,6 +29,7 @@ namespace TileEngine
         public void setY(int y)
         {
             rectangle.Y = y;
+            
         }
 
         private static ContentManager content;

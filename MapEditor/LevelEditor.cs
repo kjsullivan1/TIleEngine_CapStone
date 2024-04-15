@@ -199,6 +199,11 @@ namespace MapEditor
             try
             {
                 game.width = int.Parse(colTxt.Text);
+                if(game.width >= 99)
+                {
+                    game.width = 99;
+                    colTxt.Text = "99";
+                }
                 game.UpdateMap();
             }
             catch
@@ -213,6 +218,11 @@ namespace MapEditor
             try
             {
                 game.height = int.Parse(rowTxt.Text);
+                if (game.height >= 99)
+                {
+                    game.height = 99;
+                    rowTxt.Text = "99";
+                }
                 game.UpdateMap();
             }
             catch
