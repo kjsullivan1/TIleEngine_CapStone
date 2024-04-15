@@ -449,32 +449,25 @@ namespace MapEditor
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(isTopDown.Checked)
+           
+            if (isSideScroll.Checked)
             {
-                isSideScroll.Checked = false;
-                game.isSide = false;
-            }
-
-            if(isSideScroll.Checked)
-            {
+                isTopDown.Checked = false;
                 game.isSide = true;
                 game.isTop = false;
+
             }
         }
 
         private void isTopDown_CheckedChanged(object sender, EventArgs e)
         {
-            if (isSideScroll.Checked)
-            {
-                isTopDown.Checked = false;
-                game.isTop = false;
-            }
 
-            if(isTopDown.Checked)
+            if (isTopDown.Checked)
             {
-                game.isTop = true;
+                isSideScroll.Checked = false;
                 game.isSide = false;
-                this.Refresh();
+                game.isTop = true;
+
             }
         }
 
