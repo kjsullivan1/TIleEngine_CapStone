@@ -138,15 +138,15 @@ namespace MapEditor
             this.pctSurface.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctSurface.Location = new System.Drawing.Point(184, 27);
+            this.pctSurface.Location = new System.Drawing.Point(402, 27);
             this.pctSurface.Name = "pctSurface";
-            this.pctSurface.Size = new System.Drawing.Size(471, 576);
+            this.pctSurface.Size = new System.Drawing.Size(253, 576);
             this.pctSurface.TabIndex = 1;
             this.pctSurface.TabStop = false;
             // 
             // colTxt
             // 
-            this.colTxt.Location = new System.Drawing.Point(62, 302);
+            this.colTxt.Location = new System.Drawing.Point(181, 513);
             this.colTxt.Name = "colTxt";
             this.colTxt.Size = new System.Drawing.Size(100, 20);
             this.colTxt.TabIndex = 6;
@@ -157,7 +157,7 @@ namespace MapEditor
             // 
             // rowTxt
             // 
-            this.rowTxt.Location = new System.Drawing.Point(62, 328);
+            this.rowTxt.Location = new System.Drawing.Point(181, 539);
             this.rowTxt.Name = "rowTxt";
             this.rowTxt.Size = new System.Drawing.Size(100, 20);
             this.rowTxt.TabIndex = 7;
@@ -199,7 +199,7 @@ namespace MapEditor
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 302);
+            this.label1.Location = new System.Drawing.Point(140, 513);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 11;
@@ -208,7 +208,7 @@ namespace MapEditor
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 328);
+            this.label2.Location = new System.Drawing.Point(140, 539);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 12;
@@ -232,7 +232,7 @@ namespace MapEditor
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(59, 24);
+            this.label3.Location = new System.Drawing.Point(73, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 16;
@@ -242,7 +242,7 @@ namespace MapEditor
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(59, 360);
+            this.label4.Location = new System.Drawing.Point(278, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 17;
@@ -253,10 +253,10 @@ namespace MapEditor
             this.TopTiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TopTiles.HideSelection = false;
             this.TopTiles.LargeImageList = this.imageListTopDown;
-            this.TopTiles.Location = new System.Drawing.Point(5, 376);
+            this.TopTiles.Location = new System.Drawing.Point(214, 44);
             this.TopTiles.MultiSelect = false;
             this.TopTiles.Name = "TopTiles";
-            this.TopTiles.Size = new System.Drawing.Size(173, 227);
+            this.TopTiles.Size = new System.Drawing.Size(182, 419);
             this.TopTiles.TabIndex = 15;
             this.TopTiles.TileSize = new System.Drawing.Size(64, 64);
             this.TopTiles.UseCompatibleStateImageBehavior = false;
@@ -273,10 +273,10 @@ namespace MapEditor
             // 
             this.SideTiles.HideSelection = false;
             this.SideTiles.LargeImageList = this.imgListSideScroll;
-            this.SideTiles.Location = new System.Drawing.Point(5, 40);
+            this.SideTiles.Location = new System.Drawing.Point(12, 44);
             this.SideTiles.MultiSelect = false;
             this.SideTiles.Name = "SideTiles";
-            this.SideTiles.Size = new System.Drawing.Size(173, 227);
+            this.SideTiles.Size = new System.Drawing.Size(182, 419);
             this.SideTiles.TabIndex = 2;
             this.SideTiles.TileSize = new System.Drawing.Size(64, 64);
             this.SideTiles.UseCompatibleStateImageBehavior = false;
@@ -315,7 +315,7 @@ namespace MapEditor
             // 
             // mapLevel
             // 
-            this.mapLevel.Location = new System.Drawing.Point(95, 278);
+            this.mapLevel.Location = new System.Drawing.Point(214, 489);
             this.mapLevel.Name = "mapLevel";
             this.mapLevel.Size = new System.Drawing.Size(37, 20);
             this.mapLevel.TabIndex = 20;
@@ -324,7 +324,7 @@ namespace MapEditor
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 280);
+            this.label5.Location = new System.Drawing.Point(140, 491);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 13);
             this.label5.TabIndex = 21;
