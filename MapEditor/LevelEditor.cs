@@ -80,7 +80,10 @@ namespace MapEditor
                     //Size size = image.Size;
                     //image.Height = 64;
                     //imgListSideScroll.Images.Add(img);
-                }
+            }
+
+            game.isTop = true;
+            game.isSide = false;
 
             dir = new DirectoryInfo(game.Content.RootDirectory + "/TopDown");
             FileInfo[] topDownTextures = dir.GetFiles("*.xnb");
@@ -101,12 +104,6 @@ namespace MapEditor
 
                         switch(i)
                         {
-                            case 0:
-                                itemName = "Empty";
-                                break;
-                            case 1:
-                                itemName = "Void";
-                                break;
                             default:
                                 itemName = "";
                                 break;
@@ -115,38 +112,41 @@ namespace MapEditor
                         TopTiles.Items.Add(new ListViewItem(itemName, i));
                     }
                 }
+               
             }
-                //string filepath = Application.StartupPath + @"\Content\Textures\PlatformTiles.png";
-                //Bitmap tileSheet = new Bitmap(filepath);
-                //int tilecount = 0;
-                //for (int y = 0; y < tileSheet.Height / TileMap.TileHeight;    //pixelSize
-                //y++)
-                //{
-                //    for (int x = 0; x < tileSheet.Width / TileMap.TileWidth; //pixelSize 
-                //    x++)
-                //    {
-                //        Bitmap newBitmap = tileSheet.Clone(new
-                //        System.Drawing.Rectangle(
-                //        x * TileMap.TileWidth,
-                //        y * TileMap.TileHeight,
-                //        TileMap.TileWidth,
-                //        TileMap.TileHeight),
-                //        System.Drawing.Imaging.PixelFormat.DontCare);
-                //        imgListTiles.Images.Add(newBitmap);
-                //        string itemName = "";
-                //        if (tilecount == 0)
-                //        {
-                //            itemName = "Empty";
-                //        }
-                //        if (tilecount == 1)
-                //        {
-                //            itemName = "White";
-                //        }
-                //        ListViewItem(itemName, tilecount++));
-                //    }
-                //}
+            game.isTop = false;
+            game.isSide = true;
+            //string filepath = Application.StartupPath + @"\Content\Textures\PlatformTiles.png";
+            //Bitmap tileSheet = new Bitmap(filepath);
+            //int tilecount = 0;
+            //for (int y = 0; y < tileSheet.Height / TileMap.TileHeight;    //pixelSize
+            //y++)
+            //{
+            //    for (int x = 0; x < tileSheet.Width / TileMap.TileWidth; //pixelSize 
+            //    x++)
+            //    {
+            //        Bitmap newBitmap = tileSheet.Clone(new
+            //        System.Drawing.Rectangle(
+            //        x * TileMap.TileWidth,
+            //        y * TileMap.TileHeight,
+            //        TileMap.TileWidth,
+            //        TileMap.TileHeight),
+            //        System.Drawing.Imaging.PixelFormat.DontCare);
+            //        imgListTiles.Images.Add(newBitmap);
+            //        string itemName = "";
+            //        if (tilecount == 0)
+            //        {
+            //            itemName = "Empty";
+            //        }
+            //        if (tilecount == 1)
+            //        {
+            //            itemName = "White";
+            //        }
+            //        ListViewItem(itemName, tilecount++));
+            //    }
+            //}
 
-            }
+        }
         private void FixScrollBarScales()
         {
             //Camera.ViewPortWidth = pctSurface.Width;
@@ -474,6 +474,7 @@ namespace MapEditor
             {
                 game.isTop = true;
                 game.isSide = false;
+                this.Refresh();
             }
         }
 

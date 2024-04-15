@@ -96,7 +96,7 @@ namespace MapEditor
             // loadMapToolStripMenuItem
             // 
             this.loadMapToolStripMenuItem.Name = "loadMapToolStripMenuItem";
-            this.loadMapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadMapToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.loadMapToolStripMenuItem.Text = "&Load Map";
             this.loadMapToolStripMenuItem.Click += new System.EventHandler(this.loadMapToolStripMenuItem_Click);
             // 
@@ -252,7 +252,7 @@ namespace MapEditor
             // 
             this.TopTiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TopTiles.HideSelection = false;
-            this.TopTiles.LargeImageList = this.imgListSideScroll;
+            this.TopTiles.LargeImageList = this.imageListTopDown;
             this.TopTiles.Location = new System.Drawing.Point(5, 376);
             this.TopTiles.MultiSelect = false;
             this.TopTiles.Name = "TopTiles";
