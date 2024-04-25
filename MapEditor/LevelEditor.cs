@@ -402,7 +402,7 @@ namespace MapEditor
                         //sw.Write("\n");
                     }
 
-                    sw.Write(rowTxt.Text + colTxt.Text);
+                    sw.Write("Height:"+rowTxt.Text+"Width:"+colTxt.Text);
                     sw.Flush();
 
                     sw.Close();
@@ -423,13 +423,38 @@ namespace MapEditor
                 if(System.IO.File.Exists(filePath))
                 {
                     string mapInfo = File.ReadAllText(filePath);
-                    int width = int.Parse(mapInfo.Substring(mapInfo.Length -2, 2));
-                    int height = int.Parse(mapInfo.Substring(mapInfo.Length - 4, 2));
+                    int lenghtTilDims = 0;
+                    int StartWidthIndex = 0;
+                    int StartHeightIndex = 0;
+                    int width = 25;
+                    int height = 1;
+                    for(int k = 0; k < mapInfo.Length - 6; k++) //Lets run through the file :)
+                    {
+                        if (mapInfo.Substring(k, 6).Contains("Width:"))//Search for Width: containing 6 characters
+                        {
+                            width = int.Parse(mapInfo.Substring(k + 6, (mapInfo.Length - (k + 6))));
+                            StartWidthIndex = k + 6;
+
+                        }
+                    }
+                    for(int l = 0; l < mapInfo.Length; l++)
+                    {
+                        if (mapInfo.Substring(l, 7).Contains("Height:"))//Search for Height: containing, 7 characters
+                        {
+                            height = int.Parse(mapInfo.Substring(l + 7, (mapInfo.Length - StartWidthIndex)));
+                            StartHeightIndex = l;
+                            break;
+                        }
+                    }
+                    //int width = int.Parse(mapInfo.Substring(mapInfo.Length -2, 2));
+                    //int height = int.Parse(mapInfo.Substring(mapInfo.Length - 4, 2));
                     int[,] map = new int[height, width];
                     int i = 0;
                     int x = 0;
                     int y = 0;
-                    while(i < mapInfo.Length - 4)
+                    int length = mapInfo.Length - StartHeightIndex;
+                   
+                    while(i < mapInfo.Length - length)
                     {
                         
                         int num = int.Parse(mapInfo.Substring(i, 1));
