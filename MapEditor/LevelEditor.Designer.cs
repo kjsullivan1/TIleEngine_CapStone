@@ -50,9 +50,9 @@ namespace MapEditor
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.TopTiles = new System.Windows.Forms.ListView();
+            this.imageListTopDown = new System.Windows.Forms.ImageList(this.components);
             this.imgListSideScroll = new System.Windows.Forms.ImageList(this.components);
             this.SideTiles = new System.Windows.Forms.ListView();
-            this.imageListTopDown = new System.Windows.Forms.ImageList(this.components);
             this.isSideScroll = new System.Windows.Forms.CheckBox();
             this.isTopDown = new System.Windows.Forms.CheckBox();
             this.mapLevel = new System.Windows.Forms.NumericUpDown();
@@ -128,8 +128,9 @@ namespace MapEditor
             // clearMapToolStripMenuItem
             // 
             this.clearMapToolStripMenuItem.Name = "clearMapToolStripMenuItem";
-            this.clearMapToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.clearMapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clearMapToolStripMenuItem.Text = "&Clear Map";
+            this.clearMapToolStripMenuItem.Click += new System.EventHandler(this.clearMapToolStripMenuItem_Click);
             // 
             // pctSurface
             // 
@@ -246,6 +247,12 @@ namespace MapEditor
             this.TopTiles.View = System.Windows.Forms.View.Tile;
             this.TopTiles.SelectedIndexChanged += new System.EventHandler(this.TopTiles_SelectedIndexChanged);
             // 
+            // imageListTopDown
+            // 
+            this.imageListTopDown.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageListTopDown.ImageSize = new System.Drawing.Size(64, 64);
+            this.imageListTopDown.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // imgListSideScroll
             // 
             this.imgListSideScroll.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
@@ -265,12 +272,6 @@ namespace MapEditor
             this.SideTiles.UseCompatibleStateImageBehavior = false;
             this.SideTiles.View = System.Windows.Forms.View.Tile;
             this.SideTiles.SelectedIndexChanged += new System.EventHandler(this.SideTiles_SelectedIndexChanged);
-            // 
-            // imageListTopDown
-            // 
-            this.imageListTopDown.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
-            this.imageListTopDown.ImageSize = new System.Drawing.Size(64, 64);
-            this.imageListTopDown.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // isSideScroll
             // 

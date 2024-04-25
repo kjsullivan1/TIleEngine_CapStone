@@ -486,6 +486,9 @@ namespace MapEditor
             
         }
 
-     
+        private void clearMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            game.ClearMap();
+        }
     }
 }

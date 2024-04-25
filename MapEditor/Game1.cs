@@ -131,6 +131,14 @@ namespace MapEditor
             //graphics.PreferredBackBufferHeight = pixelSize * height;
             //graphics.ApplyChanges();
         }
+
+        public void ClearMap()
+        {
+            map = new int[height, width];
+            TileMap.Generate(map, pixelSize, isSide, isTop);
+        }
+
+
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
