@@ -389,11 +389,10 @@ namespace MapEditor
 
             if(isSideScroll.Checked)
             {
-                string filePath = Application.StartupPath + @"/Maps/SideScroll/Map" + (int)mapLevel.Value + ".txt";
+                string filePath = Application.StartupPath + @"/Content/Maps/SideScroll/Map" + (int)mapLevel.Value + ".txt";
            
                 using (var sw = new StreamWriter(System.IO.File.Create(filePath)))
                 {
-
                     for (int y = 0; y < game.map.GetLength(0); y++)
                     {
                         for (int x = 0; x < game.map.GetLength(1); x++)
@@ -418,7 +417,8 @@ namespace MapEditor
         {
             if (isSideScroll.Checked)
             {
-                string filePath = Application.StartupPath + @"/Maps/SideScroll/Map" + (int)mapLevel.Value + ".txt";
+                string filePath = Application.StartupPath + @"/Content/Maps/SideScroll/Map" + (int)mapLevel.Value + ".txt";
+               
 
                 if(System.IO.File.Exists(filePath))
                 {
