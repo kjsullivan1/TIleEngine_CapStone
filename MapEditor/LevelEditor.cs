@@ -199,11 +199,6 @@ namespace MapEditor
             try
             {
                 game.width = int.Parse(colTxt.Text);
-                if(game.width >= 99)
-                {
-                    game.width = 99;
-                    colTxt.Text = "99";
-                }
                 game.UpdateMap();
             }
             catch
@@ -218,11 +213,6 @@ namespace MapEditor
             try
             {
                 game.height = int.Parse(rowTxt.Text);
-                if (game.height >= 99)
-                {
-                    game.height = 99;
-                    rowTxt.Text = "99";
-                }
                 game.UpdateMap();
             }
             catch
@@ -427,22 +417,40 @@ namespace MapEditor
                     int StartWidthIndex = 0;
                     int StartHeightIndex = 0;
                     int width = 25;
-                    int height = 1;
+                    int height = 0;
+                    string tHeight = "";
+
                     for(int k = 0; k < mapInfo.Length - 6; k++) //Lets run through the file :)
                     {
                         if (mapInfo.Substring(k, 6).Contains("Width:"))//Search for Width: containing 6 characters
                         {
                             width = int.Parse(mapInfo.Substring(k + 6, (mapInfo.Length - (k + 6))));
-                            StartWidthIndex = k + 6;
+                            StartWidthIndex = k;
 
                         }
                     }
+                    //int subLength = mapInfo.Length - StartWidthIndex;
                     for(int l = 0; l < mapInfo.Length; l++)
                     {
                         if (mapInfo.Substring(l, 7).Contains("Height:"))//Search for Height: containing, 7 characters
                         {
-                            height = int.Parse(mapInfo.Substring(l + 7, (mapInfo.Length - StartWidthIndex)));
-                            StartHeightIndex = l;
+                            int j = 7;
+                            while (true)
+                            {
+                                tHeight += mapInfo.Substring(l + j, 1);
+                                try
+                                {
+                                    height = int.Parse(tHeight);
+                                    StartHeightIndex = l + j;
+                                    j++;
+                                }
+                                catch
+                                {
+                                    break;
+                                }
+                                
+                            }
+
                             break;
                         }
                     }
@@ -454,7 +462,7 @@ namespace MapEditor
                     int y = 0;
                     int length = mapInfo.Length - StartHeightIndex;
                    
-                    while(i < mapInfo.Length - length)
+                    while(i < mapInfo.Length && !mapInfo.Substring(i,7).Contains("Height:"))
                     {
                         
                         int num = int.Parse(mapInfo.Substring(i, 1));
@@ -477,6 +485,8 @@ namespace MapEditor
                     game.height = height;
                     game.map = map;
                     game.UpdateMap();
+                    rowTxt.Text = height.ToString();
+                    colTxt.Text = width.ToString();
 
                 }
             }
