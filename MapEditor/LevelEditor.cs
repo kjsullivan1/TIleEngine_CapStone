@@ -398,9 +398,29 @@ namespace MapEditor
                     sw.Close();
                 }
             }
-           
+            if (isTopDown.Checked)
+            {
+                string filePath = Application.StartupPath + @"/Content/Maps/TopDown/Map" + (int)mapLevel.Value + ".txt";
 
-           
+                using (var sw = new StreamWriter(System.IO.File.Create(filePath)))
+                {
+                    for (int y = 0; y < game.map.GetLength(0); y++)
+                    {
+                        for (int x = 0; x < game.map.GetLength(1); x++)
+                        {
+                            sw.Write(game.map[y, x]);
+                        }
+                        //sw.Write("\n");
+                    }
+
+                    sw.Write("Height:" + rowTxt.Text + "Width:" + colTxt.Text);
+                    sw.Flush();
+
+                    sw.Close();
+                }
+            }
+
+
         }
 
         private void loadMapToolStripMenuItem_Click(object sender, EventArgs e)
@@ -475,6 +495,91 @@ namespace MapEditor
                             y += 1;
                         }
                         if(y >= height)
+                        {
+                            break;
+                        }
+                        i++;
+                    }
+
+                    game.width = width;
+                    game.height = height;
+                    game.map = map;
+                    game.UpdateMap();
+                    rowTxt.Text = height.ToString();
+                    colTxt.Text = width.ToString();
+
+                }
+            }
+            if (isTopDown.Checked)
+            {
+                string filePath = Application.StartupPath + @"/Content/Maps/TopDown/Map" + (int)mapLevel.Value + ".txt";
+
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    string mapInfo = File.ReadAllText(filePath);
+                    int lenghtTilDims = 0;
+                    int StartWidthIndex = 0;
+                    int StartHeightIndex = 0;
+                    int width = 25;
+                    int height = 0;
+                    string tHeight = "";
+
+                    for (int k = 0; k < mapInfo.Length - 6; k++) //Lets run through the file :)
+                    {
+                        if (mapInfo.Substring(k, 6).Contains("Width:"))//Search for Width: containing 6 characters
+                        {
+                            width = int.Parse(mapInfo.Substring(k + 6, (mapInfo.Length - (k + 6))));
+                            StartWidthIndex = k;
+
+                        }
+                    }
+                    //int subLength = mapInfo.Length - StartWidthIndex;
+                    for (int l = 0; l < mapInfo.Length; l++)
+                    {
+                        if (mapInfo.Substring(l, 7).Contains("Height:"))//Search for Height: containing, 7 characters
+                        {
+                            int j = 7;
+                            while (true)
+                            {
+                                tHeight += mapInfo.Substring(l + j, 1);
+                                try
+                                {
+                                    height = int.Parse(tHeight);
+                                    StartHeightIndex = l + j;
+                                    j++;
+                                }
+                                catch
+                                {
+                                    break;
+                                }
+
+                            }
+
+                            break;
+                        }
+                    }
+                    //int width = int.Parse(mapInfo.Substring(mapInfo.Length -2, 2));
+                    //int height = int.Parse(mapInfo.Substring(mapInfo.Length - 4, 2));
+                    int[,] map = new int[height, width];
+                    int i = 0;
+                    int x = 0;
+                    int y = 0;
+                    int length = mapInfo.Length - StartHeightIndex;
+
+                    while (i < mapInfo.Length && !mapInfo.Substring(i, 7).Contains("Height:"))
+                    {
+
+                        int num = int.Parse(mapInfo.Substring(i, 1));
+                        map[y, x] = num;
+
+                        x++;
+                        if (x >= width)
+                        {
+                            x = 0;
+                            y += 1;
+                        }
+                        if (y >= height)
                         {
                             break;
                         }
