@@ -387,13 +387,13 @@ namespace MapEditor
                     {
                         for (int x = 0; x < game.map.GetLength(1); x++)
                         {
-                            if(game.map[y,x] >= 10)
+                            if (game.map[y, x] >= 10)
                             {
                                 string num = game.map[y, x].ToString();
                                 string formattedNum = num.Substring(0, 1);
-                                for(int i = 1; i < num.Length; i++)
+                                for (int i = 1; i < num.Length; i++)
                                 {
-                                    formattedNum += "." + num.Substring(i);
+                                    formattedNum += "." + num.Substring(i,1);
                                 }
                                 //formattedNum += ".";
                                 sw.Write(formattedNum);
@@ -402,7 +402,7 @@ namespace MapEditor
                             {
                                 sw.Write(game.map[y, x]);
                             }
-                           
+
                         }
                         //sw.Write("\n");
                     }
@@ -430,7 +430,7 @@ namespace MapEditor
                                 string formattedNum = num.Substring(0, 1);
                                 for (int i = 1; i < num.Length; i++)
                                 {
-                                    formattedNum += "." + num.Substring(i);
+                                    formattedNum += "." + num.Substring(i,1);
                                 }
                                 //formattedNum += ".";
                                 sw.Write(formattedNum);
@@ -515,24 +515,34 @@ namespace MapEditor
                     while(i < length && !mapInfo.Substring(i,7).Contains("Height:"))
                     {
                         string num1 = mapInfo.Substring(i, 2);
-                        if (num1.Contains("."))
+                        if (num1.Substring(1) == ".")
                         {
-                            int num = int.Parse(mapInfo.Substring(i, 1));
-                            mapInfo.Remove(i, 2);
-                            length--;
-                            //num += int.Parse(mapInfo.Substring(i, 1));
-                            while (mapInfo.Substring(i, 2) == ".")
+                            string num = mapInfo.Substring(i, 1);
+                            int tempI = i + 2;
+                            while (mapInfo.Substring(tempI, 2).Contains("."))
                             {
-                                num += int.Parse(mapInfo.Substring(i, 1));
-                                mapInfo.Remove(i, 2);
-                                length--;
+                                num += mapInfo.Substring(tempI, 1);
+                                tempI += 2;
                             }
-                            map[y, x] = num;
+                            num += mapInfo.Substring(tempI, 1);
+
+                            //mapInfo.Remove(i, 2);
+                            //length--;
+                            //num += int.Parse(mapInfo.Substring(i, 1));
+                            //while (mapInfo.Substring(i, 2) == ".")
+                            //{
+                            //    num += int.Parse(mapInfo.Substring(i, 1));
+                            //    //mapInfo.RemoveAtr(i, 2);
+                            //    //length--;
+                            //}
+                            map[y, x] = int.Parse(num);
+                            i = tempI + 1;
                         }
                         else
                         {
                             int num = int.Parse(mapInfo.Substring(i, 1));
                             map[y, x] = num;
+                            i++;
                         }
 
                         x++;
