@@ -106,6 +106,100 @@ namespace MapEditor
             base.Initialize();
         }
 
+        public void AddRows(int rows, bool isUp)
+        {
+            int[,] tempMap = map;
+            map = new int[height, width];
+
+            if(isUp)
+            {
+                for(int y = 0; y < tempMap.GetLength(0); y++)
+                {
+                    for(int x = 0; x < tempMap.GetLength(1); x++)
+                    {
+                        try
+                        {
+                            map[y + rows, x] = tempMap[y, x];
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int y = 0; y < tempMap.GetLength(0); y++)
+                {
+                    for (int x = 0; x < tempMap.GetLength(1); x++)
+                    {
+                        try
+                        {
+                            map[y, x] = tempMap[y, x];
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
+            }
+            TileMap.Generate(map, pixelSize, isSide, isTop);
+            Camera.WorldRectangle = new Rectangle(0, 0, TileMap.tileMap.mapWidth, TileMap.tileMap.mapHeight);
+        }
+
+        public void AddCols(int cols, bool isLeft)
+        {
+            int[,] tempMap = map;
+            map = new int[height, width];
+
+            if(isLeft)
+            {
+                //for (int y = 0; y < height; y++)
+                //{
+                //    for(int x = 0; x < cols; x++)
+                //    {
+                //        map[y, x] = 0;
+                //    }
+                //}
+                for (int y = 0; y < tempMap.GetLength(0); y++)
+                {
+                    for (int x = 0; x < tempMap.GetLength(1); x++)
+                    {
+                        try
+                        {
+                            map[y, x + cols] = tempMap[y, x];
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int y = 0; y < tempMap.GetLength(0); y++)
+                {
+                    for (int x = 0; x < tempMap.GetLength(1); x++)
+                    {
+                        try
+                        {
+                            map[y, x] = tempMap[y, x];
+                        }
+                        catch
+                        {
+
+                        }
+
+                    }
+                }
+            }
+            TileMap.Generate(map, pixelSize, isSide, isTop);
+            Camera.WorldRectangle = new Rectangle(0, 0, TileMap.tileMap.mapWidth, TileMap.tileMap.mapHeight);
+        }
+
         public void UpdateMap()
         {
             int[,] tempMap = map;

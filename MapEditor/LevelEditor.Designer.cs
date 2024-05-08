@@ -57,9 +57,17 @@ namespace MapEditor
             this.isTopDown = new System.Windows.Forms.CheckBox();
             this.mapLevel = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
+            this.addNumCol = new System.Windows.Forms.NumericUpDown();
+            this.addNumRow = new System.Windows.Forms.NumericUpDown();
+            this.AddColBtn = new System.Windows.Forms.Button();
+            this.AddRowBtn = new System.Windows.Forms.Button();
+            this.isAddLeft = new System.Windows.Forms.CheckBox();
+            this.isAddTop = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctSurface)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapLevel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addNumCol)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addNumRow)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -128,7 +136,7 @@ namespace MapEditor
             // clearMapToolStripMenuItem
             // 
             this.clearMapToolStripMenuItem.Name = "clearMapToolStripMenuItem";
-            this.clearMapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearMapToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.clearMapToolStripMenuItem.Text = "&Clear Map";
             this.clearMapToolStripMenuItem.Click += new System.EventHandler(this.clearMapToolStripMenuItem_Click);
             // 
@@ -314,11 +322,76 @@ namespace MapEditor
             this.label5.TabIndex = 21;
             this.label5.Text = "Map Number";
             // 
+            // addNumCol
+            // 
+            this.addNumCol.Location = new System.Drawing.Point(14, 510);
+            this.addNumCol.Name = "addNumCol";
+            this.addNumCol.Size = new System.Drawing.Size(39, 20);
+            this.addNumCol.TabIndex = 22;
+            // 
+            // addNumRow
+            // 
+            this.addNumRow.Location = new System.Drawing.Point(15, 539);
+            this.addNumRow.Name = "addNumRow";
+            this.addNumRow.Size = new System.Drawing.Size(38, 20);
+            this.addNumRow.TabIndex = 23;
+            // 
+            // AddColBtn
+            // 
+            this.AddColBtn.Location = new System.Drawing.Point(59, 510);
+            this.AddColBtn.Name = "AddColBtn";
+            this.AddColBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddColBtn.TabIndex = 24;
+            this.AddColBtn.Text = "Add Col(s)";
+            this.AddColBtn.UseVisualStyleBackColor = true;
+            this.AddColBtn.Click += new System.EventHandler(this.AddColBtn_Click);
+            // 
+            // AddRowBtn
+            // 
+            this.AddRowBtn.Location = new System.Drawing.Point(59, 536);
+            this.AddRowBtn.Name = "AddRowBtn";
+            this.AddRowBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddRowBtn.TabIndex = 25;
+            this.AddRowBtn.Text = "Add Row(s)";
+            this.AddRowBtn.UseVisualStyleBackColor = true;
+            this.AddRowBtn.Click += new System.EventHandler(this.AddRowBtn_Click);
+            // 
+            // isAddLeft
+            // 
+            this.isAddLeft.AutoSize = true;
+            this.isAddLeft.Checked = true;
+            this.isAddLeft.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.isAddLeft.Location = new System.Drawing.Point(15, 491);
+            this.isAddLeft.Name = "isAddLeft";
+            this.isAddLeft.Size = new System.Drawing.Size(66, 17);
+            this.isAddLeft.TabIndex = 26;
+            this.isAddLeft.Text = "Add Left";
+            this.isAddLeft.UseVisualStyleBackColor = true;
+            this.isAddLeft.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
+            // 
+            // isAddTop
+            // 
+            this.isAddTop.AutoSize = true;
+            this.isAddTop.Checked = true;
+            this.isAddTop.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.isAddTop.Location = new System.Drawing.Point(12, 566);
+            this.isAddTop.Name = "isAddTop";
+            this.isAddTop.Size = new System.Drawing.Size(67, 17);
+            this.isAddTop.TabIndex = 27;
+            this.isAddTop.Text = "Add Top";
+            this.isAddTop.UseVisualStyleBackColor = true;
+            // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 631);
+            this.Controls.Add(this.isAddTop);
+            this.Controls.Add(this.isAddLeft);
+            this.Controls.Add(this.AddRowBtn);
+            this.Controls.Add(this.AddColBtn);
+            this.Controls.Add(this.addNumRow);
+            this.Controls.Add(this.addNumCol);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.mapLevel);
             this.Controls.Add(this.isTopDown);
@@ -344,6 +417,8 @@ namespace MapEditor
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctSurface)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapLevel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addNumCol)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addNumRow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,5 +453,11 @@ namespace MapEditor
         private System.Windows.Forms.CheckBox isTopDown;
         private System.Windows.Forms.NumericUpDown mapLevel;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown addNumCol;
+        private System.Windows.Forms.NumericUpDown addNumRow;
+        private System.Windows.Forms.Button AddColBtn;
+        private System.Windows.Forms.Button AddRowBtn;
+        private System.Windows.Forms.CheckBox isAddLeft;
+        private System.Windows.Forms.CheckBox isAddTop;
     }
 }

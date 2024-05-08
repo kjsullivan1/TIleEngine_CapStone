@@ -387,21 +387,8 @@ namespace MapEditor
                     {
                         for (int x = 0; x < game.map.GetLength(1); x++)
                         {
-                            if (game.map[y, x] >= 10)
-                            {
-                                string num = game.map[y, x].ToString();
-                                string formattedNum = num.Substring(0, 1);
-                                for (int i = 1; i < num.Length; i++)
-                                {
-                                    formattedNum += "." + num.Substring(i,1);
-                                }
-                                //formattedNum += ".";
-                                sw.Write(formattedNum);
-                            }
-                            else
-                            {
-                                sw.Write(game.map[y, x]);
-                            }
+                            string num = game.map[y, x].ToString() + ",";
+                            sw.Write(num);
 
                         }
                         //sw.Write("\n");
@@ -424,21 +411,8 @@ namespace MapEditor
                     {
                         for (int x = 0; x < game.map.GetLength(1); x++)
                         {
-                            if (game.map[y, x] >= 10)
-                            {
-                                string num = game.map[y, x].ToString();
-                                string formattedNum = num.Substring(0, 1);
-                                for (int i = 1; i < num.Length; i++)
-                                {
-                                    formattedNum += "." + num.Substring(i,1);
-                                }
-                                //formattedNum += ".";
-                                sw.Write(formattedNum);
-                            }
-                            else
-                            {
-                                sw.Write(game.map[y, x]);
-                            }
+                            string num = game.map[y, x].ToString() + ",";
+                            sw.Write(num);
                         }
                         //sw.Write("\n");
                     }
@@ -511,49 +485,32 @@ namespace MapEditor
                     int x = 0;
                     int y = 0;
                     int length = mapInfo.Length;
-                   
-                    while(i < length && !mapInfo.Substring(i,7).Contains("Height:"))
+
+                    while (i < length && mapInfo.Substring(i, 1).Contains("H") == false)
                     {
-                        string num1 = mapInfo.Substring(i, 2);
-                        if (num1.Substring(1) == ".")
+                        if (mapInfo.Substring(i, 1) != ",")
                         {
+                            int j = i + 1;
                             string num = mapInfo.Substring(i, 1);
-                            int tempI = i + 2;
-                            while (mapInfo.Substring(tempI, 2).Contains("."))
-                            {
-                                num += mapInfo.Substring(tempI, 1);
-                                tempI += 2;
-                            }
-                            num += mapInfo.Substring(tempI, 1);
-
-                            //mapInfo.Remove(i, 2);
-                            //length--;
-                            //num += int.Parse(mapInfo.Substring(i, 1));
-                            //while (mapInfo.Substring(i, 2) == ".")
-                            //{
-                            //    num += int.Parse(mapInfo.Substring(i, 1));
-                            //    //mapInfo.RemoveAtr(i, 2);
-                            //    //length--;
-                            //}
-                            map[y, x] = int.Parse(num);
-                            i = tempI + 1;
-                        }
-                        else
-                        {
-                            int num = int.Parse(mapInfo.Substring(i, 1));
-                            map[y, x] = num;
                             i++;
-                        }
+                            while (mapInfo.Substring(j, 1) != ",")
+                            {
+                                num += mapInfo.Substring(j, 1);
+                                i++;
+                                j++;
+                            }
+                            map[y, x] = int.Parse(num);
+                            x++;
+                            if (x >= width)
+                            {
+                                x = 0;
+                                y += 1;
+                            }
 
-                        x++;
-                        if(x >= width)
-                        {
-                            x = 0;
-                            y += 1;
-                        }
-                        if(y >= height)
-                        {
-                            break;
+                            if (y >= height)
+                            {
+                                break;
+                            }
                         }
                         i++;
                     }
@@ -624,54 +581,33 @@ namespace MapEditor
                     int y = 0;
                     int length = mapInfo.Length;
 
-                    while (i < length && !mapInfo.Substring(i, 7).Contains("Height:"))
+                    while (i < length && mapInfo.Substring(i, 1).Contains("H") == false)
                     {
-
-                       
-                        string num1 = mapInfo.Substring(i, 2);
-                        if (num1.Substring(1) == ".")
+                        if (mapInfo.Substring(i, 1) != ",")
                         {
+                            int j = i + 1;
                             string num = mapInfo.Substring(i, 1);
-                            int tempI = i + 2;
-                            while (mapInfo.Substring(tempI,2).Contains("."))
-                            {
-                                num += mapInfo.Substring(tempI, 1);
-                                tempI += 2;
-                            }
-                            num += mapInfo.Substring(tempI, 1);
-                            
-                            //mapInfo.Remove(i, 2);
-                            //length--;
-                            //num += int.Parse(mapInfo.Substring(i, 1));
-                            //while (mapInfo.Substring(i, 2) == ".")
-                            //{
-                            //    num += int.Parse(mapInfo.Substring(i, 1));
-                            //    //mapInfo.RemoveAtr(i, 2);
-                            //    //length--;
-                            //}
-                            map[y, x] = int.Parse(num);
-                            i = tempI + 1;
-                        }
-                        else
-                        {
-                            int num = int.Parse(mapInfo.Substring(i, 1));
-                            map[y, x] = num;
                             i++;
-                        }
+                            while (mapInfo.Substring(j, 1) != ",")
+                            {
+                                num += mapInfo.Substring(j, 1);
+                                i++;
+                                j++;
+                            }
+                            map[y, x] = int.Parse(num);
+                            x++;
+                            if (x >= width)
+                            {
+                                x = 0;
+                                y += 1;
+                            }
 
-                        
-
-                        x++;
-                        if (x >= width)
-                        {
-                            x = 0;
-                            y += 1;
+                            if (y >= height)
+                            {
+                                break;
+                            }
                         }
-                        if (y >= height)
-                        {
-                            break;
-                        }
-                        //i += 2;
+                        i++;
                     }
 
                     game.width = width;
@@ -717,6 +653,37 @@ namespace MapEditor
         private void clearMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             game.ClearMap();
+        }
+
+        private void AddColBtn_Click(object sender, EventArgs e)
+        {
+            int num = (int)addNumCol.Value;
+            int numCols = num;
+            num += int.Parse(colTxt.Text);
+            colTxt.Text = num.ToString();
+
+            game.width = int.Parse(colTxt.Text);
+            game.height = int.Parse(rowTxt.Text);
+
+            game.AddCols(numCols, isAddLeft.Checked);
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void AddRowBtn_Click(object sender, EventArgs e)
+        {
+            int num = (int)addNumRow.Value;
+            int numRows = num;
+            num += int.Parse(rowTxt.Text);
+            rowTxt.Text = num.ToString();
+
+            game.width = int.Parse(colTxt.Text);
+            game.height = int.Parse(rowTxt.Text);
+
+            game.AddRows(numRows, isAddTop.Checked);
         }
     }
 }
