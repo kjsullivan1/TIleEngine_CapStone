@@ -106,6 +106,10 @@ namespace MapEditor
             base.Initialize();
         }
 
+        public void UpdateShowNums(bool showNum)
+        {
+            TileMap.SetShowNum(showNum);
+        }
         public void AddRows(int rows, bool isUp)
         {
             int[,] tempMap = map;

@@ -486,20 +486,30 @@ namespace MapEditor
                     int y = 0;
                     int length = mapInfo.Length;
 
-                    while (i < length && mapInfo.Substring(i, 1).Contains("H") == false)
+                    while (i < length && mapInfo.Substring(i, 1).Contains("H") == false && i < length && mapInfo.Substring(i, 2).Contains(",H") == false &&
+                        i < length && mapInfo.Substring(i, 2).Contains("He") == false)
                     {
                         if (mapInfo.Substring(i, 1) != ",")
                         {
                             int j = i + 1;
                             string num = mapInfo.Substring(i, 1);
                             i++;
-                            while (mapInfo.Substring(j, 1) != ",")
+                            while (j < length && mapInfo.Substring(j, 1) != "," && mapInfo.Substring(j, 1) != "H")
                             {
                                 num += mapInfo.Substring(j, 1);
                                 i++;
                                 j++;
                             }
-                            map[y, x] = int.Parse(num);
+                            try
+                            {
+                                map[y, x] = int.Parse(num);
+                            }
+                            catch
+                            {
+                                
+                            }
+
+                            
                             x++;
                             if (x >= width)
                             {
@@ -684,6 +694,18 @@ namespace MapEditor
             game.height = int.Parse(rowTxt.Text);
 
             game.AddRows(numRows, isAddTop.Checked);
+        }
+
+        private void checkBox1_CheckedChanged_2(object sender, EventArgs e)
+        {
+            if(showNums.Checked)
+            {
+                game.UpdateShowNums(true);
+            }
+            else if(showNums.Checked == false)
+            {
+                game.UpdateShowNums(false);
+            }
         }
     }
 }

@@ -12,9 +12,11 @@ namespace TileEngine
     public class Tile
     {
         public Texture2D texture;
-
+        public bool showNums = false;
         private Rectangle rectangle;
         public int[] mapPoint;
+        SpriteFont text;
+        public int index;
         public Rectangle Rectangle
         {
             get { return rectangle; }
@@ -37,29 +39,43 @@ namespace TileEngine
         {
             protected get { return content; }
             set { content = value; }
+
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            text = Content.Load<SpriteFont>("file");
+
+           
             spriteBatch.Draw(texture, rectangle, Color.White);
+            if(showNums)
+            {
+                spriteBatch.DrawString(text, index.ToString(), new Vector2((rectangle.X + rectangle.Width / 2) - 5, (rectangle.Y + rectangle.Height / 2) - 5), Color.Black);
+
+            }
+
         }
     }
 
     class EmptyTile : Tile
     {
-        public EmptyTile(int i, Rectangle newRect, bool isSide, bool isTop)
+        public EmptyTile(int i, Rectangle newRect, bool isSide, bool isTop, int num, bool showNum)
         {
-            if(isSide)
+            index = num;
+            this.showNums = showNum;
+            if (isSide)
             {
                 texture = Content.Load<Texture2D>("SideScroll/Tile" + i);
                 this.Rectangle = newRect;
+               
             }
             else if(isTop)
             {
                 texture = Content.Load<Texture2D>("TopDown/Tile" + i);
                 this.Rectangle = newRect;
             }
-           
+          
         }
 
     }

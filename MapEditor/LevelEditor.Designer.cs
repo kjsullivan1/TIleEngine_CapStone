@@ -63,6 +63,7 @@ namespace MapEditor
             this.AddRowBtn = new System.Windows.Forms.Button();
             this.isAddLeft = new System.Windows.Forms.CheckBox();
             this.isAddTop = new System.Windows.Forms.CheckBox();
+            this.showNums = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctSurface)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mapLevel)).BeginInit();
@@ -381,11 +382,23 @@ namespace MapEditor
             this.isAddTop.Text = "Add Top";
             this.isAddTop.UseVisualStyleBackColor = true;
             // 
+            // showNums
+            // 
+            this.showNums.AutoSize = true;
+            this.showNums.Location = new System.Drawing.Point(181, 566);
+            this.showNums.Name = "showNums";
+            this.showNums.Size = new System.Drawing.Size(98, 17);
+            this.showNums.TabIndex = 28;
+            this.showNums.Text = "Show Numbers";
+            this.showNums.UseVisualStyleBackColor = true;
+            this.showNums.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_2);
+            // 
             // LevelEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 631);
+            this.Controls.Add(this.showNums);
             this.Controls.Add(this.isAddTop);
             this.Controls.Add(this.isAddLeft);
             this.Controls.Add(this.AddRowBtn);
@@ -459,5 +472,6 @@ namespace MapEditor
         private System.Windows.Forms.Button AddRowBtn;
         private System.Windows.Forms.CheckBox isAddLeft;
         private System.Windows.Forms.CheckBox isAddTop;
+        private System.Windows.Forms.CheckBox showNums;
     }
 }

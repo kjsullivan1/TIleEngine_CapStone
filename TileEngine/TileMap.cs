@@ -17,12 +17,19 @@ namespace TileEngine
         public int mapHeight;
         public static TileMap tileMap = new TileMap();
         private static List<EmptyTile> emptyTiles = new List<EmptyTile>();
+        public bool showNums;
         public void SetDims(int width, int height)
         {
             mapWidth = width;
             mapHeight = height;
         }
 
+        static public void SetShowNum(bool showNum)
+        {
+            tileMap.showNums = showNum;
+        }
+
+        
         static public int GetCellByPixelX(int pixelX)
         {
             return pixelX / pixelSize;
@@ -49,7 +56,7 @@ namespace TileEngine
 
                         if (num >= 0)
                         {
-                            emptyTiles.Add(new EmptyTile(num, new Rectangle(x * size, y * size, size, size), isSide, isTop));
+                            emptyTiles.Add(new EmptyTile(num, new Rectangle(x * size, y * size, size, size), isSide, isTop, num, tileMap.showNums));
 
                         }
                       
@@ -72,7 +79,7 @@ namespace TileEngine
 
                         if (num >= 0)
                         {
-                            emptyTiles.Add(new EmptyTile(num, new Rectangle(x * size, y * size, size, size), isSide, isTop));
+                            emptyTiles.Add(new EmptyTile(num, new Rectangle(x * size, y * size, size, size), isSide, isTop, num, tileMap.showNums));
 
                         }
                         width += x * size;
